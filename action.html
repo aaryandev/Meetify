@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Meetify</title>
+    <link rel="stylesheet" href="public/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="public/Assets/css/style.css">
+    <style>
+        /* Logo styles */
+        .logo {
+            height: 105px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            padding: 1rem 2rem;
+            background-color: #f4f7f9;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #212529;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            color: #212529;
+            margin-right: 1.5rem;
+        }
+
+        /* Jumbotron styles */
+        .jumbotron {
+            background-color: #ffffff;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #212529;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        /* Button styles */
+        .new-meeting,
+        .enter-code {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 1rem;
+        }
+
+        .btn-custom-blue {
+            background-color: #447ea1;
+            color: white;
+        }
+
+        .btn-custom-white {
+            background-color: white;
+            color: #447ea1;
+            border-color: #447ea1;
+        }
+
+        /* Image styles */
+        .signin-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Main content styles */
+        main {
+            padding-top: 6rem;
+            margin-top: -4rem;
+            padding-bottom: 4rem;
+        }
+    </style>
+</head>
+<body style="padding-top: 3.5rem;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md fixed-top">
+        <img src="public/assets/images/logo.png" class="logo" alt="">
+        <a href="#" class="navbar-brand"></a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <!-- Join the meeting button -->
+                <li class="nav-item">
+                    <button class="btn btn-custom-white btn-lg text-info font-weight-bold join-meeting">Join the meeting</button>
+                </li>
+                <!-- Start a meeting button -->
+                <li class="nav-item">
+                    <button class="btn btn-custom-blue btn-lg text-light font-weight-bold new-meeting">Start a meeting</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <main>
+        <div class="jumbotron h-100 d-flex">
+            <div class="container w-50">
+                <h1>Virtual meetings, so that you always stay connected.</h1>
+                <p>Making communication easier, one step at a time.</p>
+                <div class="input-group mb-3">
+                    <!-- Enter code input -->
+                    <input type="text" class="form-control enter-code" placeholder="Enter a code" aria-label="Enter a code" aria-describedby="enter-code-btn">
+                    <!-- Join button -->
+                    <div class="input-group-append">
+                        <button class="btn btn-custom-blue text-light font-weight-bold join-action" type="button" id="enter-code-btn">Join</button>
+                    </div>
+                </div>
+                <!-- Start a new meeting button -->
+                <button class="btn btn-custom-blue btn-lg text-light font-weight-bold new-meeting">Start a new meeting</button>
+            </div>
+            <!-- Image -->
+            <div class="container w-50">
+                <img src="public/Assets/images/landing-meeting-call.png" alt="" class="signin-image">
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="container">
+        <h6>Made by <span class="learn-more text-info">Aaryan Rawat</span>.</h6>
+    </footer>
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            // Event listeners for buttons
+            $(document).on("click", ".join-meeting", function(){
+                $(".enter-code").focus();
+            });
+
+            $(document).on("click", ".join-action", function(){
+                var join_value = $('.enter-code').val();
+                var meetingUrl = window.location.origin + "?meetingID=" + join_value;
+                window.location.replace(meetingUrl);
+            });
+
+            $(document).on("click", ".new-meeting", function(){
+                var eight_d_value = Math.floor(Math.random() * 100000000);
+                var meetingUrl = window.location.origin + "?meetingID=" + eight_d_value;
+                window.location.replace(meetingUrl);
+            });
+        });
+    </script>
+</body>
+</html>
